@@ -1,0 +1,57 @@
+---
+title: "R Markdown Example"
+author: Péter Jeszenszky
+output:
+  html_document:
+    toc: true
+    number_sections: true
+    toc_float: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Using Bash
+==========
+
+```{bash}
+http http://wttr.in/?n\&T
+```
+
+Using R
+=======
+
+```{r}
+library(ggplot2)
+summary(diamonds)
+ggplot(data = diamonds, aes(x = price, group = cut, fill = cut)) + geom_density(adjust = 1.5, position = "fill")
+```
+
+Source: <https://www.r-graph-gallery.com/135-stacked-density-graph.html#stacked>
+
+Using Python
+============
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set_theme(style="darkgrid")
+iris = sns.load_dataset("iris")
+
+# Set up the figure
+f, ax = plt.subplots(figsize=(8, 8))
+ax.set_aspect("equal")
+
+# Draw a contour plot to represent each bivariate density
+sns.kdeplot(
+    data=iris.query("species != 'versicolor'"),
+    x="sepal_width",
+    y="sepal_length",
+    hue="species",
+    thresh=.1,
+)
+
+```
+Source: <https://seaborn.pydata.org/examples/multiple_bivariate_kde.html>
